@@ -19,8 +19,8 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 /media
-/staticfiles
-/static
+ /staticfiles
+# /static
 
 # Arquivos de configuração sensíveis
 .env
@@ -35,7 +35,7 @@ secrets.json
 *.swp
 *.swo
 *~
-.DS_Store
+
 
 # Jupyter Notebook
 .ipynb_checkpoints

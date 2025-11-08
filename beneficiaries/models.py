@@ -62,4 +62,8 @@ class Beneficiary(models.Model):
     projects = models.ManyToManyField('projects.Project', through='projects.Enrollment')
 
     def __str__(self):
-        return self().beneficiary_name
+        return self.beneficiary_name
+    
+    class Meta:
+        verbose_name = 'Beneficiário'
+        verbose_name_plural = 'Beneficiários'

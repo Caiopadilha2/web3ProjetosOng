@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Projetos' }}{% endblock %}
+
+ {% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    
+ 
+ {% endblock %}
+
+
+{% block content %}
+<section class="w-full mt-20">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-black ">
+            Detalhes do Projeto 
+        </h1>
+        <p class="text-subtitle/70  mt-1"> 
+            Veja e gerencie as informações do projeto.
+        </p>
+    </div>
+    <div class="bg-secondary  rounded-lg shadow-sm border border-subtitle/20 ">
+        <div class="p-6 border-b border-subtitle/20 ">
+            <h2 class="text-xl font-bold text-black ">
+                Informações do Projeto
+            </h2>
+        </div>
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm">
+            <div>
+                <p class="font-medium text-subtitle/70 ">
+                    Nome do Projeto 
+                </p>
+                <p class="text-black  mt-1">
+                    Por um fio
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-subtitle/70 ">Tipo</p>
+                <span
+                    class=" mt-1 text-black">Curso</span>
+            </div>
+            <div>
+                <p class="font-medium text-subtitle/70 ">
+                    Descrição
+                </p>
+                <p class="text-black  mt-1">
+                    Um Projeto que fornece recursos educacionais à mulheres em situação de Vulnerabilidade.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-subtitle/70 ">
+                    Data início
+                </p>
+                <p class="text-black  mt-1">01/01/2023</p>
+            </div>
+            <div>
+                <p class="font-medium text-subtitle/70 ">Data fim</p>
+                <p class="text-black  mt-1">00/00/00</p>
+            </div>
+        </div>
+        <div class="px-6 py-4 bg-primary rounded-b-lg flex justify-end gap-3">
+            <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-blue-button/20 text-blue-buttonlight text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-button/30 transition-colors">
+                <span class="truncate">Editar Projeto</span>
+            </button>
+            <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-red-100 text-red-600  hover:bg-red-200 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-button/90 transition-colors">
+                <span class="truncate">Deletar Projeto</span>
+            </button>
+        </div>
+    </div>
+    <div class="mt-10 bg-secondary  rounded-lg shadow-sm border border-subtitle/20 ">
+        <div class="p-6 border-b border-blue-button/20 ">
+            <h2 class="text-xl font-bold text-black ">
+                Beneficiários Inscritos
+            </h2>
+        </div>
+        <div class="rounded-lg border border-zinc-200 bg-white shadow-sm ">
+            <div class="flex items-center justify-between border-b border-zinc-200 p-4 ">
+                <div class="relative w-full max-w-md">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="material-symbols-outlined text-zinc-400">search</span>
+                    </div>
+                    <input
+                        class="form-input w-full rounded-lg border-zinc-300 bg-primary py-2 pl-10 pr-4 text-zinc-900 placeholder-zinc-400 focus:border-blue-button focus:ring-blue-button "
+                        id="search" placeholder="Buscar por nome ou CPF" type="text" />
+                </div>
+
+            </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-blue-button/20 ">
+                <thead class="bg-background-light ">
+                    <tr class="bg-pjr r">                        
+                        <th class="px-6 py-3 text-left text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Nome
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Matrícula
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            CPF
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Telefone
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            E-mail
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody  class="bg-background-light  divide-y divide-subtitle/20   ">
+                    <tr class="text-black ">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
+                            Sophia Clark
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            12
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            987.654.321-99
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            (11) 98765-4321
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            sophia.oliveira@email.com
+                        </td>
+                        
+                    </tr>
+                    <tr class="text-black">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">
+                            Ethan Carter
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            15
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            987.654.321-99
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            (11) 98765-4321
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            sophia.oliveira@email.com
+                        </td>
+                    </tr>
+                    <tr class="text-black">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
+                            Olivia Reed
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            10
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            987.654.321-99
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            (11) 98765-4321
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            sophia.oliveira@email.com
+                        </td>
+                    </tr>
+                    <tr class="text-black">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
+                            Noah Bennett
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            14
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+                            987.654.321-99
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+                            (11) 98765-4321
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            sophia.oliveira@email.com
+                        </td>
+                    </tr>
+                    <tr class="text-black">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
+                            Ava Morgan
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            11
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            987.654.321-99
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+                            (11) 98765-4321
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            sophia.oliveira@email.com
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Detalhes do Fornecedor' }}{% endblock %}
+
+ {% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    
+ 
+ {% endblock %}
+
+ {%block content%}
+ 
+<section class="w-full mt-20">
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 ">Detalhes do Fornecedor</h2>
+        <p class="mt-1 text-sm text-gray-600 ">Vizualize e gerencia informações do Fornecedor</p>
+    </div>
+    <div class="rounded-lg border border-gray-200  bg-white  shadow-sm">
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-800  mb-4">Infomação do Fornecedor</h3>
+            <dl class="grid grid-cols-2 grid-rows-6 gap-x-4 gap-y-6 ">
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Nome Do Fornecedor</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Fornecedor Exemplo Ltda</dd>
+                </div>
+               
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Rua</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Rua marquês de Abarantes
+                    </dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">CPF</dt>
+                    <dd class="mt-1 text-sm text-gray-900 0">52.660.892/0001-50</dd>
+                </div>
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Número:</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">123</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Email</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Fornecedor.exemplo@email.com</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Complemento</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">lore ipsum
+                    </dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Telefone</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">(21) 98766-4321</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">UF</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Rio de Janeiro
+                    </dd>
+                </div>   
+               
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">tipo de doador</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Pessoa Jurídica</dd>
+                </div>
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Cidade</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Rio de janeiro
+                    </dd>
+                </div> 
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">CEP</dt>
+                    <dd class="mt-1 text-sm text-gray-900 0">20.071-001</dd>
+                </div>   
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">bairro</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">Centro
+                    </dd>
+                </div>  
+                   
+            </dl>
+        </div>
+        <div class="flex flex-col gap-4 border-t border-gray-200  bg-primary  p-6 sm:flex-row sm:justify-between sm:items-center">
+            <div class="flex gap-3">
+                <button
+                    class="inline-flex items-center justify-center rounded bg-blue-button/20  px-4 py-2 text-sm font-medium text-blue-button hover:bg-blue-button/30 ">Editar Fornecedor
+                </button>
+                <button
+                    class="inline-flex items-center justify-center rounded bg-red-100  px-4 py-2 text-sm font-medium text-red-600  hover:bg-red-200 ">Deletar Fornecedor
+                </button>
+            </div>
+            <button
+                class="inline-flex items-center justify-center rounded bg-blue-button px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-button/90">Registrar
+                Doação</button>
+        </div>
+    </div>
+</section>
+ 
+ 
+ 
+ 
+ {%endblock%}

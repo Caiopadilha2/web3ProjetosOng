@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Projetos' }}{% endblock %}
+
+ {% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    
+ 
+ {% endblock %}
+
+ {%block content%}
+
+
+
+<section class="w-full mt-20">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-foreground-light ">Gerenciar Projetos</h1>
+        <p class="text-txt-pjr  mt-1 text-gray-600">Crie projetos sociais, gerencie e acompanhe o progresso..</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-1 bg-white  p-6 rounded-lg shadow-sm">
+            <h3 class="text-lg font-bold text-foreground-light  mb-6">Cadastrar Projeto</h3>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-txt-pjr  mb-1"
+                        for="project-name">Nome do Projeto</label>
+                    <input
+                        class="w-full bg-pjr  border border-border-light  text-foreground-light  placeholder-muted-light  rounded h-10 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-button/50"
+                        id="project-name" placeholder="'Projeto Exemplo'" type="text" />
+                </div>
+                <div>
+                    <label class=" block text-sm font-medium text-txt-pjr text-txt-pjr  mb-1"
+                        for="description">Descrição</label>
+                    <textarea class=" bg-pjr w-full bg-accent-light  border border-border-light  text-foreground-light  placeholder-muted-light  rounded p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-button/50"
+                        id="description" placeholder="Uma breve descrição do projeto" rows="3"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-txt-pjr text-txt-pjr  mb-1"
+                            for="start-date">Data de Início </label>
+                        <input  class="w-full bg-pjr  border border-border-light  text-foreground-light  rounded h-10 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-button/50"
+                            id="start-date" type="date" />
+                    </div>
+                    <div>
+                        <label class="block text-txt-pjr text-sm font-medium text-txt-pjr  mb-1" for="end-date">Data de Fim</label>
+                        <input class="w-full bg-pjr  border border-border-light  text-foreground-light  rounded h-10 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-button/50"
+                            id="end-date" type="date" />
+                    </div>
+                </div>
+              
+                <div>
+                    <label class="block text-sm font-medium text-txt-pjr text-txt-pjr  mb-1"
+                        for="beneficiaries">Tipo de Projeto</label>
+                    <select class="w-full bg-pjr border border-border-light  text-foreground-light  rounded h-10 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-button/50 appearance-none bg-no-repeat bg-right pr-8"
+                        id="beneficiaries"
+                        style="background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%239cb3bf%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06z%27 clip-rule=%27evenodd%27 /%3e%3c/svg%3e');">
+                        <option>Selecione o Tipo de Projeto</option>
+                        <option>Projeto Anitta Way</option>
+                        <option>Por um fio</option>
+                        <option>Roda da vida</option>
+                        <option>Exemplo option</option>
+                        <option>Exemplo Relief</option>
+                    </select>
+                </div>
+                <div class="pt-2">
+                    <button
+                        class="w-full bg-blue-button text-white font-bold text-sm h-10 rounded-lg hover:bg-opacity-90 transition-colors"
+                        type="submit">
+                        Criar Projeto
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="lg:col-span-2">
+            <div class="bg-white  rounded-lg shadow-sm overflow-hidden">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-foreground-light ">Lista de Projetos</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead  class="  bg-pjr text-txt-pjr uppercase tracking-wider text-xs text-center">
+                            <tr class="">
+                                <th class="px-6 py-3 text-left" scope="col">Nome do Projeto</th>
+                                <th class="px-6 py-3 " scope="col">Código</th>
+                                <th class="px-6 py-3 " scope="col">Data início</th>
+                                <th class="px-6 py-3 " scope="col">Data fim</th>
+                                <th class="px-6 py-3 " scope="col">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-foreground-light ">
+                            <tr class="border-t border-border-light text-center ">
+                                <td class="px-6 py-4">
+                                    <div class=" text-left font-medium">Projeto Anitta Way</div>
+                                    <div class="text-xs text-left  text-txt-pjr  mt-1">Fornece recursos educacionais para crianças carentes.</div>
+                                </td>
+                                 <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>01</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>2023-01-15</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr">
+                                    <div>2023-08-31</div>
+                                </td>
+                                 <td class="px-6 py-4 text-txt-pjr text-center ">
+                                    <div>encontro</div>
+                                    
+                                </td>
+                            </tr>
+                            <tr class="border-t border-border-light text-center">
+                                <td class="px-6 py-4">
+                                    <div class="font-medium text-left">Por um fio</div>
+                                    <div class="text-xs text-txt-pjr text-left mt-1">Curso de corte e costura profissionalizante e interação social</div>
+                                </td>
+                                 <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>02</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>2023-03-01</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr">
+                                    <div>2023-08-31</div>
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr  ">
+                                    <div>curso</div>                                    
+                                </td>
+                            </tr>
+                            <tr class="border-t border-border-light text-center ">
+                                <td class="px-6 py-4">
+                                    <div class="font-medium text-left">Roda da vida</div>
+                                    <div class="text-xs text-txt-pjr text-left mt-1">Oferece apoio sócio emocional para mães e gestantes.</div>
+                                </td>
+                                 <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>03</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>2023-02-20</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr">
+                                    <div>2023-08-31</div>
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr text-center ">
+                                    <div>encontro</div>
+                                    
+                                </td>
+                            </tr>
+                            <tr class="border-t border-border-light text-center ">
+                                <td class="px-6 py-4">
+                                    <div class="font-medium text-left">Exemplo option</div>
+                                    <div class="text-xs text-txt-pjr text-left mt-1"> Conecta mãe em situação de risco com mentores para orientação.</div>
+                                </td>
+                                 <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>04</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>2023-04-10</div>
+                                   
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr">
+                                    <div>2023-08-31</div>
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr text-center ">
+                                    <div>curso</div>
+                                    
+                                </td>
+                            </tr>
+                            <tr class="border-t border-border-light text-center">
+                                <td class="px-6 py-4">
+                                    <div class="font-medium text-left">Exemplo Relief</div>
+                                    <div class="text-xs text-txt-pjr text-left mt-1">Fornece assistência imediata às comunidades afetadas por desastres.</div>
+                                </td>
+                                 <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>05</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr ">
+                                    <div>2023-05-05</div>
+                                    
+                                </td>
+                                <td class="px-6 py-4 text-txt-pjr">
+                                    <div>2023-08-31</div>
+                                </td>
+                               <td class="px-6 py-4 text-txt-pjr text-center ">
+                                    <div>curso</div>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ {% endblock %}

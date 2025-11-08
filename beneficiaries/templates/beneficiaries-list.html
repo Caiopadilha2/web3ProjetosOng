@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %}{{ Beneficiários }}{% endblock %}
+
+
+ {% block extra_head %}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />  
+ 
+ {% endblock %}
+
+
+
+
+
+
+{% block content %}
+    <section class="w-full mt-20">
+        <div class="mb-8 flex items-center justify-between">
+            <div>
+                <h2 class="text-3xl font-bold text-zinc-900 ">
+                    Gestão de Beneficiários
+                </h2>
+                <p class="text-zinc-600 ">
+                    Liste, pesquise, adicione, edite e remova beneficiários.
+                </p>
+            </div>
+            <button
+                class="rounded-lg bg-blue-button px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-button/90 focus:outline-none focus:ring-4 focus:ring-blue-button/50">
+               <a href=""> Cadastrar Novo Beneficiário</a>
+            </button>
+        </div>
+        <div class="rounded-lg border border-zinc-200 bg-white shadow-sm ">
+            <div class="flex items-center justify-between border-b border-zinc-200 p-4 ">
+                <div class="relative w-full max-w-md">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="material-symbols-outlined text-zinc-400">search</span>
+                    </div>
+                    <input
+                        class="form-input w-full rounded-lg border-zinc-300 bg-primary py-2 pl-10 pr-4 text-zinc-900 placeholder-zinc-400 focus:border-blue-button focus:ring-blue-button "
+                        id="search" placeholder="Buscar por nome ou CPF" type="text" />
+                </div>
+
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-zinc-500 ">
+                    <thead class="bg-zinc-50 text-xs uppercase text-zinc-700 ">
+                        <tr>
+                            <th class="px-6 py-3" scope="col">Nome</th>
+                            <th class="px-6 py-3" scope="col">CPF</th>
+                            <th class="px-6 py-3" scope="col">Telefone</th>
+                            <th class="px-6 py-3" scope="col">Status</th>
+                            <th class="px-6 py-3 text-center" scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-border-light bg-white hover:bg-zinc-50 ">
+                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row">
+                                Ana Silva
+                            </th>
+                            <td class="px-6 py-4">123.456.789-00</td>
+                            <td class="px-6 py-4">(11) 98765-4321</td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 ">Ativo</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <button
+                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
+                                <button
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-border-light bg-white hover:bg-zinc-50 ">
+                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row">
+                                Bruno Costa
+                            </th>
+                            <td class="px-6 py-4">987.654.321-99</td>
+                            <td class="px-6 py-4">(21) 99876-5432</td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 ">Pendente</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <button
+                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200">Editar</button>
+                                <button
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-border-light bg-white hover:bg-zinc-50">
+                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row">
+                                Carla Dias
+                            </th>
+                            <td class="px-6 py-4">456.789.012-34</td>
+                            <td class="px-6 py-4">(31) 98765-1234</td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 ">Ativo</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <button
+                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
+                                <button
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class=" hover:bg-zinc-50 ">
+                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 e" scope="row">
+                                Daniel Rocha
+                            </th>
+                            <td class="px-6 py-4">321.654.987-65</td>
+                            <td class="px-6 py-4">(41) 99876-4321</td>
+                            <td class="px-6 py-4">
+                                <span
+                                    class="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 ">Inativo</span>
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <button
+                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
+                                <button
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
