@@ -8,8 +8,8 @@ app_name = 'stock'
 
 
 urlpatterns = [
-    path('suppliers',supplier_list, name='Fornecedores'),
-    path('details/',supplier_details, name='Detalhes_Fornecedores'),   
-    path('',stock_entry, name='Estoque'),   
+    path('list/',supplier_list, name='Fornecedores'),
+    path('<int:pk>/',supplier_details,name='detalhes_Fornecedores'),   
+    path('append/',stock_entry, name='entradas'),   
 
 ]

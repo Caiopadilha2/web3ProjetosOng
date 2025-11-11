@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{ 'Detalhes do Beneficiários' }}{% endblock %}
+{% block title %}{{ beneficiary.nome }}{% endblock %}
 
  {% block extra_head %}
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
@@ -20,82 +20,76 @@
             <dl class="grid grid-cols-3 grid-rows-6 gap-x-4 gap-y-6 ">
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Nome completo</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">Sophia Oliveira</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.beneficiary_name }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Data do Registro</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">25/06/2025</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.created_at }}</dd>
                 </div>
                  <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Rua</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">Avenida Presidente Vargas
-                    </dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.street }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">CPF</dt>
-                    <dd class="mt-1 text-sm text-gray-900 0">123.456.789-00</dd>
+                    <dd class="mt-1 text-sm text-gray-900 0">{{ beneficiary.cpf }}</dd>
                 </div>                
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Status</dt>
                     <dd
-                        class="mt-1 inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 ">
-                        Ativo</dd>
+                        class="mt-1 inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 ">{{ beneficiary.status }}</dd>
                 </div>
                  <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Nº Casa</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">360</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.address_number }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Email</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">sophia.oliveira@email.com</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.email }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Tamanho da Família</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">4</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.household_members }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Complemento</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">lore ipsum
-                    </dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.address_complement }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Telefone</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">(21) 98765-4321</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.phone }}</dd>
                 </div>
                   <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Nº de Dependentes</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">2</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.dependents_count }}</dd>
                 </div>
                  <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">UF</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">Rio de Janeiro
-                    </dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.state }}</dd>
                 </div>   
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Data de Nascimento</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">22/04/1988</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.birth_date }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Renda Familiar</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">R$: 500,00</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">R$: {{ beneficiary.family_income }}</dd>
                 </div>
                  <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Cidade</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">Rio de janeiro
-                    </dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.city }}</dd>
                 </div> 
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">Profissão</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">Professora</dd>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.occupation }}</dd>
                 </div>
                 <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500 ">CEP</dt>
-                    <dd class="mt-1 text-sm text-gray-900 0">20.071-001</dd>
+                    <dd class="mt-1 text-sm text-gray-900 0">{{ beneficiary.zip_code }}</dd>
                 </div>   
                 <div class="sm:col-span-1">
-                    <dt class="text-sm font-medium text-gray-500 ">bairro</dt>
-                    <dd class="mt-1 text-sm text-gray-900 ">Centro
-                    </dd>
+                    <dt class="text-sm font-medium text-gray-500 ">Bairro</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{ beneficiary.neighborhood }}</dd>
                 </div>  
                    
             </dl>

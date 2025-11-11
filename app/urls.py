@@ -8,10 +8,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
     path('beneficiaries/',include('beneficiaries.urls')),
-    path('donations/',include('donations.urls')),
-    path('suppliers/', include('stock.urls', namespace='suppliers') ),
+    path('donations/',include('donations.urls')),    
     path('projects/', include('projects.urls')),
-    path('stock', include('stock.urls', namespace='stock')),
+    path('stock/suppliers/', include('stock.urls' , namespace='sotck_suppliers')),
+    path('stock/entries/', include('stock.urls', namespace='stock_entries')),
 
 
     path('',RedirectView.as_view(url='accounts/login/')),

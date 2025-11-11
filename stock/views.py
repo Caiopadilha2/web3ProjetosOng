@@ -1,14 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Supplier
 
 
 def supplier_list (request):
-    return render(request, 'suppliers-list.html')
+    suppliers = Supplier.objects.all()
+
+    return render(request, 'suppliers-list.html', {'suppliers' : suppliers} )
 
 
 
-def supplier_details(request):
-    return render(request, 'suppliers-details.html')
+def supplier_details(request, pk):
+
+    supplier = get_object_or_404(Supplier, pk = pk)
+
+    return render(request, 'suppliers-details.html', { 'supplier': supplier })
 
 
 def stock_entry(request):

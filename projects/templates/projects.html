@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load humanize %}
+
 {% block title %}{{ 'Projetos' }}{% endblock %}
 
  {% block extra_head %}
@@ -75,6 +77,7 @@
                 <div class="p-6">
                     <h3 class="text-lg font-bold text-foreground-light ">Lista de Projetos</h3>
                 </div>
+                {% if projects %}
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
                         <thead  class="  bg-pjr text-txt-pjr uppercase tracking-wider text-xs text-center">
@@ -87,116 +90,53 @@
                             </tr>
                         </thead>
                         <tbody class="text-foreground-light ">
+                            {% for project in projects %}
                             <tr class="border-t border-border-light text-center ">
                                 <td class="px-6 py-4">
-                                    <div class=" text-left font-medium">Projeto Anitta Way</div>
-                                    <div class="text-xs text-left  text-txt-pjr  mt-1">Fornece recursos educacionais para crianças carentes.</div>
+                                    <div class=" text-left font-medium">
+                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.project_name}}</a>
+                                    </div>
                                 </td>
-                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>01</div>
-                                    
+
+                                <td>
+                                <div class="text  text-txt-pjr  mt-1">
+                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.id_project}}</a>
+                                    </div>
                                 </td>
+
                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>2023-01-15</div>
+                                    <div>
+                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.start_date}}</a>    
+                                    </div>
                                     
                                 </td>
-                                <td class="px-6 py-4 text-txt-pjr">
-                                    <div>2023-08-31</div>
-                                </td>
-                                 <td class="px-6 py-4 text-txt-pjr text-center ">
-                                    <div>encontro</div>
-                                    
-                                </td>
-                            </tr>
-                            <tr class="border-t border-border-light text-center">
-                                <td class="px-6 py-4">
-                                    <div class="font-medium text-left">Por um fio</div>
-                                    <div class="text-xs text-txt-pjr text-left mt-1">Curso de corte e costura profissionalizante e interação social</div>
-                                </td>
-                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>02</div>
-                                    
-                                </td>
+
                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>2023-03-01</div>
+                                    <div>
+                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.end_date}}
+ </a>                                   </div>
                                     
                                 </td>
+
                                 <td class="px-6 py-4 text-txt-pjr">
-                                    <div>2023-08-31</div>
+                                    <div><a href="{%url 'projects:detalhes_projetos' project.id_project%}"></a>{{project.get_project_type_display}}</div>
                                 </td>
-                                <td class="px-6 py-4 text-txt-pjr  ">
-                                    <div>curso</div>                                    
-                                </td>
+
                             </tr>
-                            <tr class="border-t border-border-light text-center ">
-                                <td class="px-6 py-4">
-                                    <div class="font-medium text-left">Roda da vida</div>
-                                    <div class="text-xs text-txt-pjr text-left mt-1">Oferece apoio sócio emocional para mães e gestantes.</div>
-                                </td>
-                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>03</div>
-                                    
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>2023-02-20</div>
-                                    
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr">
-                                    <div>2023-08-31</div>
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr text-center ">
-                                    <div>encontro</div>
-                                    
-                                </td>
-                            </tr>
-                            <tr class="border-t border-border-light text-center ">
-                                <td class="px-6 py-4">
-                                    <div class="font-medium text-left">Exemplo option</div>
-                                    <div class="text-xs text-txt-pjr text-left mt-1"> Conecta mãe em situação de risco com mentores para orientação.</div>
-                                </td>
-                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>04</div>
-                                    
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>2023-04-10</div>
-                                   
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr">
-                                    <div>2023-08-31</div>
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr text-center ">
-                                    <div>curso</div>
-                                    
-                                </td>
-                            </tr>
-                            <tr class="border-t border-border-light text-center">
-                                <td class="px-6 py-4">
-                                    <div class="font-medium text-left">Exemplo Relief</div>
-                                    <div class="text-xs text-txt-pjr text-left mt-1">Fornece assistência imediata às comunidades afetadas por desastres.</div>
-                                </td>
-                                 <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>05</div>
-                                    
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr ">
-                                    <div>2023-05-05</div>
-                                    
-                                </td>
-                                <td class="px-6 py-4 text-txt-pjr">
-                                    <div>2023-08-31</div>
-                                </td>
-                               <td class="px-6 py-4 text-txt-pjr text-center ">
-                                    <div>curso</div>
-                                    
-                                </td>
-                            </tr>
+                            {% endfor %}
+                            
                         </tbody>
                     </table>
+                    {% else %}
+                     <div class="alert alert-info">
+                        <p>Nenhum beneficiário cadastrado ainda.</p>
+                    </div>
+                 {% endif %}   
                 </div>
             </div>
         </div>
     </div>
+    
 </section>
 
  {% endblock %}

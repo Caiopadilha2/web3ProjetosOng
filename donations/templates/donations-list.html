@@ -59,36 +59,22 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-200 ">
+                    {%if donations %}
+                    {%for donation in donations %}
                     <tr>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-slate-900 ">
-                            Débora Carvalho</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">111.111.111-11</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">26/07/2025
-                        </td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">10</td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-slate-900 "><a href="{% url 'donations:Detalhes doação' donation.id_donation %} ">{{ donation.beneficiary_fk.beneficiary_name }}</a></td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 "><a href="{% url 'donations:Detalhes doação' donation.id_donation %} ">{{ donation.beneficiary_fk.cpf }}</a></td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 "><a href="{% url 'donations:Detalhes doação' donation.id_donation %} ">{{ donation.donation_date }}</a></td>
+                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 "><a href="{% url 'donations:Detalhes doação' donation.id_donation %} ">{{ donation.id_donation }}</a></td>
                     </tr>
-                    <tr>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-slate-900 ">Bruno Pereira</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">222.222.222-22</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">25/01/2025
-                        </td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">20</td>
-                    </tr>
-                    <tr>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-slate-900 ">
-                            Caio Padilha</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">333.333.333-33</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">24/07/2025
-                        </td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">30</td>
-                    </tr>
-                    <tr>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-slate-900 ">Raul Athayde</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">444.444.444-44</td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">23/07/2025
-                        </td>
-                        <td class="whitespace-nowrap px-6 py-4 text-sm text-slate-600 ">40</td>
-                    </tr>
+                   {% endfor %}
+
+                    {% else %}
+                         <div class="alert alert-info">
+                          <p>Nenhum beneficiário cadastrado ainda.</p>
+                        </div>
+                    {%endif%}
+                
                     
                 </tbody>
             </table>

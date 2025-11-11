@@ -7,7 +7,7 @@ app_name = 'donations'
 
 urlpatterns = [
     path('', donation_list, name='Doação'),
-    path('details/', donation_details, name='Detalhes doação'),
+    path('<int:pk>/', donation_details, name='Detalhes doação'),
 
    
 

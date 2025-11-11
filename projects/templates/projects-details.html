@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{%load humanize%}
 {% block title %}{{ 'Projetos' }}{% endblock %}
 
  {% block extra_head %}
@@ -10,68 +11,72 @@
 
 {% block content %}
 <section class="w-full mt-20">
-    <div class="mb-8">
-        <h1 class="text-3xl font-bold text-black ">
-            Detalhes do Projeto 
-        </h1>
-        <p class="text-subtitle/70  mt-1"> 
-            Veja e gerencie as informações do projeto.
-        </p>
+    <div class="mb-8 flex items-center justify-between">
+        <div>
+            <h1 class="text-3xl font-bold text-black ">
+                Detalhes do Projeto 
+            </h1>
+            <p class="text-subtitle/70  mt-1"> 
+                Veja e gerencie as informações do projeto.
+            </p>
+        </div>    
+        <button class="rounded-lg bg-blue-button px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-button/90 focus:outline-none focus:ring-4 focus:ring-blue-button/50">
+            <a href=""> Cadastrar Novo Projeto</a>
+        </button>
     </div>
-    <div class="bg-secondary  rounded-lg shadow-sm border border-subtitle/20 ">
-        <div class="p-6 border-b border-subtitle/20 ">
-            <h2 class="text-xl font-bold text-black ">
-                Informações do Projeto
-            </h2>
-        </div>
-        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm">
-            <div>
-                <p class="font-medium text-subtitle/70 ">
-                    Nome do Projeto 
-                </p>
-                <p class="text-black  mt-1">
-                    Por um fio
-                </p>
+    <div>
+
+        <div class="rounded-lg border border-gray-200  bg-white  shadow-sm">
+            <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-800  mb-4">Infomação do projeto</h3>
+                <dl class="grid grid-cols-2 grid-rows-1 gap-x-12 gap-y-6 ">
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Nome do projeto</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{ project.project_name }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Tipo </dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{ project.get_project_type_display }}</dd>
+                    </div>
+                    <div class="sm:col-span-1 sm:row-span-2">
+                        <dt class="text-sm font-medium text-gray-500 ">Descrição</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{ project.project_description }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Data de início</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{project.start_date }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Data do Encerramento</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{project.end_date }}</dd>
+
+                    </div>
+                </dl>
             </div>
-            <div>
-                <p class="font-medium text-subtitle/70 ">Tipo</p>
-                <span
-                    class=" mt-1 text-black">Curso</span>
+            <div
+                class="flex flex-col gap-4 border-t border-gray-200  bg-primary  p-6 ">
+                <div class="flex gap-3 justify-end">
+                    <button
+                        class="inline-flex items-center justify-center rounded  px-4 py-2 text-sm font-medium bg-blue-button/20 text-blue-button hover:bg-blue-button/30 ">Editar
+                        projeto
+                    </button>
+                    <button
+                        class="inline-flex items-center justify-center rounded bg-red-100  px-4 py-2 text-sm font-medium text-red-600  hover:bg-red-200 ">Deletar
+                        projeto
+                    </button>
+                </div>
+            
             </div>
-            <div>
-                <p class="font-medium text-subtitle/70 ">
-                    Descrição
-                </p>
-                <p class="text-black  mt-1">
-                    Um Projeto que fornece recursos educacionais à mulheres em situação de Vulnerabilidade.
-                </p>
-            </div>
-            <div>
-                <p class="font-medium text-subtitle/70 ">
-                    Data início
-                </p>
-                <p class="text-black  mt-1">01/01/2023</p>
-            </div>
-            <div>
-                <p class="font-medium text-subtitle/70 ">Data fim</p>
-                <p class="text-black  mt-1">00/00/00</p>
-            </div>
-        </div>
-        <div class="px-6 py-4 bg-primary rounded-b-lg flex justify-end gap-3">
-            <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-blue-button/20 text-blue-buttonlight text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-button/30 transition-colors">
-                <span class="truncate">Editar Projeto</span>
-            </button>
-            <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-red-100 text-red-600  hover:bg-red-200 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-button/90 transition-colors">
-                <span class="truncate">Deletar Projeto</span>
-            </button>
         </div>
     </div>
+
+
+    <!-- Lista do Inscritos no Projeto -->
+ 
     <div class="mt-10 bg-secondary  rounded-lg shadow-sm border border-subtitle/20 ">
         <div class="p-6 border-b border-blue-button/20 ">
             <h2 class="text-xl font-bold text-black ">
-                Beneficiários Inscritos
+                Beneficiários inscritos no projeto
             </h2>
         </div>
         <div class="rounded-lg border border-zinc-200 bg-white shadow-sm ">
@@ -100,7 +105,7 @@
                         </th>
                         <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
                             scope="col">
-                            CPF
+                            Data/hora da incrição
                         </th>
                         <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
                             scope="col">
@@ -114,93 +119,41 @@
                     </tr>
                 </thead>
                 <tbody  class="bg-background-light  divide-y divide-subtitle/20   ">
+                    {% if enrollments %}
+
+                    {% for enrollment in enrollments %}
+
                     <tr class="text-black ">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
-                            Sophia Clark
+                            {{ enrollment.beneficiary_fk.beneficiary_name }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            12
+                            {{ enrollment.id_Enrollment }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            987.654.321-99
+                            {{ enrollment.enrollment_stamp }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            (11) 98765-4321
+                            {{ enrollment.beneficiary_fk.phone }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            sophia.oliveira@email.com
+                            {{ enrollment.beneficiary_fk.email }}
                         </td>
                         
                     </tr>
-                    <tr class="text-black">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">
-                            Ethan Carter
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            15
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            987.654.321-99
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            (11) 98765-4321
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            sophia.oliveira@email.com
-                        </td>
-                    </tr>
-                    <tr class="text-black">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
-                            Olivia Reed
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            10
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            987.654.321-99
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            (11) 98765-4321
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            sophia.oliveira@email.com
-                        </td>
-                    </tr>
-                    <tr class="text-black">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
-                            Noah Bennett
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            14
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
-                            987.654.321-99
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
-                            (11) 98765-4321
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            sophia.oliveira@email.com
-                        </td>
-                    </tr>
-                    <tr class="text-black">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
-                            Ava Morgan
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            11
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            987.654.321-99
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
-                            (11) 98765-4321
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
-                            sophia.oliveira@email.com
-                        </td>
-                    </tr>
+
+                   {% endfor %}     
+
+
+                    
+                
+                    {% else %}
+                    <div class="alert alert-info">
+                        <p>Nenhum beneficiário cadastrado ainda.</p>
+                    </div>
+                    {% endif %}
                 </tbody>
+                
             </table>
         </div>
     </div>

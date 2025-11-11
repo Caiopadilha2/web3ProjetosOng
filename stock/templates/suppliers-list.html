@@ -41,6 +41,8 @@
                 </div>
 
             </div>
+
+            <!-- lista de Fornecedores -->
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm text-zinc-500 ">
                     <thead class="bg-zinc-50 text-xs uppercase text-zinc-700 ">
@@ -53,12 +55,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if suppliers %}
+
+                        {%for supplier in suppliers%}
                         <tr class="border-b border-border-light bg-white hover:bg-zinc-50 ">
-                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row">Casa Verde Alimentos Ltda.
-                            </th>
-                            <td class="px-6 py-4">05.172.321/0001-97</td>
-                            <td class="px-6 py-4">(11) 98765-4321</td>
-                            <td class="px-6 py-4">casaverde@example.com</td>
+                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.supplier_name}}</a></th>
+                            <td class="px-6 py-4"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.tax_id}}</a></td>
+                            <td class="px-6 py-4"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.phone}}</a></td>
+                            <td class="px-6 py-4"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.email}}</a></td>
                             <td class="px-6 py-4 text-center">
                                 <button
                                     class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
@@ -66,48 +70,12 @@
                                     class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
                             </td>
                         </tr>
-                        <tr class="border-b border-border-light bg-white hover:bg-zinc-50 ">
-                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row">
-                                LogExpress Transportes
-                            </th>
-                            <td class="px-6 py-4">91.989.897/0001-83</td>
-                            <td class="px-6 py-4">(21) 99876-5432</td>
-                            <td class="px-6 py-4">logexpress@example.com</td>
-                            <td class="px-6 py-4 text-center">
-                                <button
-                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200">Editar</button>
-                                <button
-                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-border-light bg-white hover:bg-zinc-50">
-                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row">
-                               Bella Moda Confecções
-                            </th>
-                            <td class="px-6 py-4">52.660.892/0001-50</td>
-                            <td class="px-6 py-4">(31) 98765-1234</td>
-                            <td class="px-6 py-4">bellamoda@example.com</td>
-                            <td class="px-6 py-4 text-center">
-                                <button
-                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
-                                <button
-                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr class=" hover:bg-zinc-50 ">
-                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 e" scope="row">
-                                TechPoint Soluções Digitais
-                            </th>
-                            <td class="px-6 py-4">50.492.214/0001-09</td>
-                            <td class="px-6 py-4">(21) 95665-1234</td>
-                            <td class="px-6 py-4">techpoint@example.com</td>
-                            <td class="px-6 py-4 text-center">
-                                <button
-                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
-                                <button
-                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200">Excluir</button>
-                            </td>
-                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <div class="alert alert-info">
+                            <p>Nenhum beneficiário cadastrado ainda.</p>
+                        </div> 
+                        {%endif%}
                     </tbody>
                 </table>
             </div>

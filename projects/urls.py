@@ -8,7 +8,8 @@ app_name = 'projects'
 
 urlpatterns = [
     path('',project_list, name='Projetos'),
-    path('details/',project_details, name=' detalhes Projetos'),
-   
+    path('<int:pk>/',project_details, name='detalhes_projetos'),
+    
+    
 
 ]

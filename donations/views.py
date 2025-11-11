@@ -1,14 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Donation
 
 
 
 def donation_list(request):
+    donations = Donation.objects.select_related('beneficiary_fk').all()
+
+    context = {
+        'donations' : donations,                                                 
+                                                   
+    }
+
+    return render(request, 'donations-list.html', context)
 
 
-    return render(request, 'donations-list.html')
 
-def donation_details(request):
+def donation_details(request, pk):
 
-    return render(request,'donations-details.html')
+    donation = get_object_or_404(Donation.objects.select_related('beneficiary_fk'), pk = pk)
+    
+
+    return render(request,'donations-details.html', { 'donation': donation })
 
