@@ -22,9 +22,10 @@ def beneficiary_details(request,pk):
 
     if request.method == 'POST':
         beneficiary.delete()
-        return render(request, 'beneficiaries-list.html', {
-            'beneficiaries': Beneficiary.objects.all()
-        })
+        # return render(request, 'beneficiaries-list.html', {
+        #     'beneficiaries': Beneficiary.objects.all()
+        # })
+        return redirect('form_beneficiarios')
 
     return render(request,'beneficiaries-details.html',{'beneficiary': beneficiary})
 

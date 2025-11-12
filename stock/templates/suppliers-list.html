@@ -60,9 +60,9 @@
                         {%for supplier in suppliers%}
                         <tr class="border-b border-border-light bg-white hover:bg-zinc-50 ">
                             <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.supplier_name}}</a></th>
-                            <td class="px-6 py-4"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.tax_id}}</a></td>
-                            <td class="px-6 py-4"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.phone}}</a></td>
-                            <td class="px-6 py-4"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.email}}</a></td>
+                            <td class="px-6 py-4">{{supplier.tax_id}}</td>
+                            <td class="px-6 py-4">{{supplier.phone}}</td>
+                            <td class="px-6 py-4">{{supplier.email}}</td>
                             <td class="px-6 py-4 text-center">
                                 <button
                                     class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>

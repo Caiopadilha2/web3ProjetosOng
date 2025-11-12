@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Project, Enrollment
 from beneficiaries.models import Beneficiary
 from projects.forms import ProjectForm
@@ -17,6 +17,7 @@ def project_list(request):
             form.save()
             success = True  
             form = ProjectForm()
+            return redirect('/projects/')
     else:
         form = ProjectForm()
 

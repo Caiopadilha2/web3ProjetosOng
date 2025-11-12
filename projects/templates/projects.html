@@ -103,26 +103,26 @@
 
                                 <td>
                                 <div class="text  text-txt-pjr  mt-1">
-                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.id_project}}</a>
+                                        {{project.id_project}}</a>
                                     </div>
                                 </td>
 
                                 <td class="px-6 py-4 text-txt-pjr ">
                                     <div>
-                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.start_date}}</a>    
+                                        {{project.start_date}} 
                                     </div>
                                     
                                 </td>
 
                                 <td class="px-6 py-4 text-txt-pjr ">
                                     <div>
-                                        <a href="{%url 'projects:detalhes_projetos' project.id_project%}">{{project.end_date}}
+                                        {{project.end_date}}
  </a>                                   </div>
                                     
                                 </td>
 
                                 <td class="px-6 py-4 text-txt-pjr">
-                                    <div><a href="{%url 'projects:detalhes_projetos' project.id_project%}"></a>{{project.get_project_type_display}}</div>
+                                    <div>{{project.get_project_type_display}}</div>
                                 </td>
 
                             </tr>
