@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .models import Beneficiary  
+from beneficiaries.forms import BeneficiariesModelForm,auto_register_Form
 
 # Create your views here.
 
@@ -23,8 +24,33 @@ def beneficiary_details(request,pk):
 
 
 def beneficiary_form(request):
-    return render(request,'registration-form.html' )
+    success = False 
+
+    if request.method == 'POST':
+        form = BeneficiariesModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            success = True  
+            form = BeneficiariesModelForm()
+    else:
+        form = BeneficiariesModelForm()
+
+    return render(request, 'registration-form.html', {'form': form, 'success': success})
+
+
 
 
 def beneficiary_autoform(request):
-    return render(request, 'auto-registration-form.html')
+    success = False 
+
+    if request.method == 'POST':
+        form = auto_register_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            success = True  
+            form = auto_register_Form()
+    else:
+        form = auto_register_Form()
+
+    return render(request, 'auto-registration-form.html', {'form': form, 'success': success})
+    

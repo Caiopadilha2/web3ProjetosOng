@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Project, Enrollment
 from beneficiaries.models import Beneficiary
+from projects.forms import ProjectForm
 
 
 # Create your views here.
@@ -8,7 +9,24 @@ from beneficiaries.models import Beneficiary
 def project_list(request):
     projects = Project.objects.all() 
 
-    return render(request,'projects.html', {'projects' : projects})
+    success = False 
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            success = True  
+            form = ProjectForm()
+    else:
+        form = ProjectForm()
+
+        context = {
+        'form': form,
+        'success': success,
+        'projects': projects
+    }
+
+    return render(request, 'projects.html', context)
 
 
 def project_details(request, pk):

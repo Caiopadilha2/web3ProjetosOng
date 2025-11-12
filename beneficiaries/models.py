@@ -44,7 +44,7 @@ class Beneficiary(models.Model):
     cpf = models.CharField(max_length=14,unique=True, blank=False, null=False,)
     zip_code = models.CharField(max_length=9,blank=False,null=False,verbose_name="CEP")
     street = models.CharField(max_length=200, blank=False, null=False, verbose_name="Rua")
-    address_number =models.CharField(max_length=10,blank=False,null=False,verbose_name="Número") 
+    address_number =models.IntegerField(max_length=10,blank=False,null=False,verbose_name="Número") 
     address_complement = models.CharField(max_length=50, blank=True,null=True,verbose_name="Complemento")
     neighborhood = models.CharField(max_length=100,blank=False,null=False,verbose_name="Bairro")
     city = models.CharField(max_length=100,blank=False,null=False,verbose_name="Cidade")
