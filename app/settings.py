@@ -53,13 +53,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'
 
 LOGIN_URL = 'accounts/login/'
 
-LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_REDIRECT_URL = '/beneficiaries/'
 
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 

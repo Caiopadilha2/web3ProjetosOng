@@ -67,7 +67,7 @@
                                 <button
                                     class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
                                 <button
-                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 ">Excluir</button>
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 " onclick="deletar('{{ supplier.id_supplier }}')">Excluir</button>
                             </td>
                         </tr>
                         {% endfor %}
@@ -82,16 +82,47 @@
         </div>
     </section>
 
+    {% endblock %}
+     {% block extra_js %}
+    <script>
+        // Lógica de busca (exemplo simples)
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
 
+            rows.forEach(row => {
+                const name = row.cells[0].innerText.toLowerCase();
+                const taxId = row.cells[1].innerText.toLowerCase();
 
+                if (name.includes(query) || taxId.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
 
+            const deletar = async (id) => {
+            const confirmacao = confirm("Tem certeza que deseja excluir este fornecedor?");
+            if (!confirmacao) {
+                return;
+            }
 
+            // enviar o nome do beneficiário para o backend para exclusão
+            await fetch(`/stock/suppliers/${id}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json',
+                },
+            })
+            // Reload na página após exclusão para atualizar a lista
+            window.location.reload();
+        }
 
-
-
-
-
-
+        // Lógica de exclusão (exemplo simples)
+        
+    </script>
 
 {% endblock %}
 

@@ -61,8 +61,11 @@
                         projeto
                     </button>
                     <button
-                        class="inline-flex items-center justify-center rounded bg-red-100  px-4 py-2 text-sm font-medium text-red-600  hover:bg-red-200 ">Deletar
-                        projeto
+                        class="inline-flex items-center justify-center rounded bg-red-100  px-4 py-2 text-sm font-medium text-red-600  hover:bg-red-200 "
+                        onclick="deletar('{{project.id_project}}')"
+                        >
+                        
+                        Deletar projeto
                     </button>
                 </div>
             
@@ -87,7 +90,7 @@
                     </div>
                     <input
                         class="form-input w-full rounded-lg border-zinc-300 bg-primary py-2 pl-10 pr-4 text-zinc-900 placeholder-zinc-400 focus:border-blue-button focus:ring-blue-button "
-                        id="search" placeholder="Buscar por nome ou CPF" type="text" />
+                        id="search" placeholder="Buscar por nome" type="text" />
                 </div>
 
             </div>
@@ -158,4 +161,41 @@
         </div>
     </div>
 </section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function() {
+        const input = searchInput.value.toLowerCase();
+        const rows = document.querySelectorAll('table tbody tr');
+
+        rows.forEach(row => {
+            const beneficiaryName = row.cells[0].innerText.toLowerCase();
+
+            if (beneficiaryName.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    const deletar = async (id) => {
+        const confirmacao = confirm("Tem certeza que deseja excluir este projeto?");
+        if (!confirmacao) {
+            return;
+        }
+
+        await fetch(`/projects/${id}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+            },
+        })
+        window.location.href = "{% url 'projects:Projetos' %}";
+    }
+</script>
 {% endblock %}

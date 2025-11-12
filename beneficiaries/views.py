@@ -16,7 +16,14 @@ def beneficiary_list(request):
     })
 
 def beneficiary_details(request,pk):
+
     beneficiary = get_object_or_404(Beneficiary,pk = pk )
+
+    if request.method == 'POST':
+        beneficiary.delete()
+        return render(request, 'beneficiaries-list.html', {
+            'beneficiaries': Beneficiary.objects.all()
+        })
 
     return render(request,'beneficiaries-details.html',{'beneficiary': beneficiary})
 
