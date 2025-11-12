@@ -13,6 +13,12 @@ def supplier_details(request, pk):
 
     supplier = get_object_or_404(Supplier, pk = pk)
 
+    if request.method == 'POST':
+        supplier.delete()
+        return render(request, 'suppliers-list.html', {
+            'suppliers': Supplier.objects.all()
+        })
+
     return render(request, 'suppliers-details.html', { 'supplier': supplier })
 
 
