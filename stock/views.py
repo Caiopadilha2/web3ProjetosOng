@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Supplier
+from stock.form import suppliers_form
 
 
 def supplier_list (request):
@@ -24,5 +25,20 @@ def supplier_details(request, pk):
 
 def stock_entry(request):
     return render(request,'stock-entry.html')
+
+def supplier_form(request):
+    success = False 
+
+    if request.method == 'POST':
+        form = suppliers_form(request.POST)
+        if form.is_valid():
+            form.save()
+            success = True  
+            form = suppliers_form()
+    else:
+        form = suppliers_form()
+
+    return render(request, 'suppliers-registration.html', {'form': form, 'success': success})
+    
 
 

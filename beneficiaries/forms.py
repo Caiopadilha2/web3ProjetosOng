@@ -78,7 +78,7 @@ class BeneficiariesModelForm(forms.ModelForm):
                          'focus:border-blue-500 focus:ring focus:ring-blue-200 text-gray-700 p-2'
             }),
         }
-        
+           
     def clean_cpf(self):
         cpf = self.cleaned_data.get('cpf')
 

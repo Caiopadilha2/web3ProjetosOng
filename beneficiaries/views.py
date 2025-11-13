@@ -61,4 +61,18 @@ def beneficiary_autoform(request):
         form = auto_register_Form()
 
     return render(request, 'auto-registration-form.html', {'form': form, 'success': success})
+
+
+def beneficiary_edit(request, pk):
+    beneficiary = get_object_or_404(Beneficiary, pk=pk)
+
+    if request.method == 'POST':
+        form = BeneficiariesModelForm(request.POST, instance=beneficiary)
+        if form.is_valid():
+            form.save()
+            return redirect('beneficiaries:Beneficiarios') 
+    else:
+        form = BeneficiariesModelForm(instance=beneficiary)
+
+    return render(request, 'edit-form.html', {'form': form, 'beneficiary': beneficiary})
     
