@@ -112,12 +112,20 @@
                     {% if success %}
                         <p class="text-green-600 font-semibold mb-4">Cadastro de beneficiário alterado com sucesso!</p>
                     {% endif %}
-                    {% if form.errors %}
+                    <!-- {% if form.errors %}
                         <div class="text-red-600 font-semibold mt-4">
                         {{ form.errors }}
                         </div>
-                    {% endif %}
-
+                    {% endif %} -->
+                    {% if form.errors %}
+                        <div class="text-red-600 font-semibold mt-4">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </form>
             </section>
 {% endblock %}

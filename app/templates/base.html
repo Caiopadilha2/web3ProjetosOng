@@ -60,8 +60,11 @@
         
 
         <div class="flex flex-row-reverse mr-8 items-center-safe   ">
-        <img alt="User avatar" class="h-10 w-10 rounded-full"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkM_rfFxBJAbkCgM5Cd-JMK9QMfNLdAK3NcIBbJ3J_SKdHkGKNmHX9jDJLkZPpjpb1gc8oZM2GnHLPA6P6SnsaBL9YMYxtxdK6s8HGZDPJX_S1n5EHblbErYhV86jSy6lfUKO8DJH9qw7EYYjmG605smi-VurEmRW-GgAO3QLSZaccjhOB5EpqxtIvce8z2BF53UnT8potf6wY0SWi8UVKx-1VWycRymushW8G4D6dk14Z9dHZYwLwxk84_FGMQdoP8KRiIRCSR0Q" />
+
+            <form method="post" action="{% url 'accounts:logout' %}">
+                {% csrf_token %}       
+                <button type="submit" class="hover:underline">Sair</button>
+            </form>
         </div>
     {% endblock %}
     </header>
