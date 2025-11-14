@@ -28,7 +28,7 @@ class suppliers_form(forms.ModelForm):
                     'class': 'block w-full rounded-lg border-gray-300 bg-white placeholder-gray-400 '
                             'focus:border-blue-500 focus:ring focus:ring-blue-200 text-gray-700 p-2'
                 }),
-                'address_number': forms.NumberInput(attrs={
+                'address_number': forms.TextInput(attrs={
                     'class': 'block w-full rounded-lg border-gray-300 bg-white placeholder-gray-400 '
                             'focus:border-blue-500 focus:ring focus:ring-blue-200 text-gray-700 p-2'
                 }),
@@ -60,3 +60,16 @@ class suppliers_form(forms.ModelForm):
                     'class': 'h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500'
                 }),
             }
+        
+    def clean_address_number(self):
+        address_number = self.cleaned_data.get('address_number')
+
+        address_number = int(address_number)
+
+        if address_number < 0:
+            raise forms.ValidationError("O número do endereço não pode ser negativo.")
+
+        return address_number
+
+        
+    

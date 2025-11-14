@@ -29,7 +29,7 @@ class BeneficiariesModelForm(forms.ModelForm):
                 'class': 'block w-full rounded-lg border-gray-300 bg-white placeholder-gray-400 '
                          'focus:border-blue-500 focus:ring focus:ring-blue-200 text-gray-700 p-2'
             }),
-            'address_number': forms.NumberInput(attrs={
+            'address_number': forms.TextInput(attrs={
                 'class': 'block w-full rounded-lg border-gray-300 bg-white placeholder-gray-400 '
                          'focus:border-blue-500 focus:ring focus:ring-blue-200 text-gray-700 p-2'
             }),
@@ -108,8 +108,11 @@ class BeneficiariesModelForm(forms.ModelForm):
     def clean_address_number(self):
         address_number = self.cleaned_data.get('address_number')
 
+        address_number = int(address_number)
+
         if address_number < 0:
-            raise ValidationError("Informe um número de endereço válido.")
+            raise forms.ValidationError("O número do endereço não pode ser negativo.")
+
         return address_number
 
     def clean_dependents_count(self):
@@ -233,8 +236,11 @@ class auto_register_Form(forms.ModelForm):
     def clean_address_number(self):
         address_number = self.cleaned_data.get('address_number')
 
+        address_number = int(address_number)
+
         if address_number < 0:
-            raise ValidationError("Informe um número de endereço válido.")
+            raise forms.ValidationError("O número do endereço não pode ser negativo.")
+
         return address_number
 
     def clean_dependents_count(self):
