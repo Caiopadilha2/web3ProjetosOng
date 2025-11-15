@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block title %}{{ Fornecedor }}{% endblock %}
+
+
+ {% block extra_head %}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />  
+ 
+ {% endblock %}
+
+
+
+
+
+
+{% block content %}
+    <section class="w-full mt-20">
+        <div class="mb-8 flex items-center justify-between">
+            <div>
+                <h2 class="text-3xl font-bold text-zinc-900 ">
+                    Gestão de Fornecedores
+                </h2>
+                <p class="text-zinc-600 ">
+                    Liste, pesquise, adicione, edite e remova Fornecedores.
+                </p>
+            </div>
+            <button
+                class="rounded-lg bg-blue-button px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-button/90 focus:outline-none focus:ring-4 focus:ring-blue-button/50">
+               <a href="{% url 'stock:form_fornecedor' %}"> Cadastrar Novo Fornecedor</a>
+            </button>
+        </div>
+        <div class="rounded-lg border border-zinc-200 bg-white shadow-sm ">
+            <div class="flex items-center justify-between border-b border-zinc-200 p-4 ">
+                <div class="relative w-full max-w-md">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="material-symbols-outlined text-zinc-400">search</span>
+                    </div>
+                    <input
+                        class="form-input w-full rounded-lg border-zinc-300 bg-primary py-2 pl-10 pr-4 text-zinc-900 placeholder-zinc-400 focus:border-blue-button focus:ring-blue-button "
+                        id="search" placeholder="Buscar por nome ou CPF/CNPJ" type="text" />
+                </div>
+
+            </div>
+
+            <!-- lista de Fornecedores -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-zinc-500 ">
+                    <thead class="bg-zinc-50 text-xs uppercase text-zinc-700 ">
+                        <tr>
+                            <th class="px-6 py-3" scope="col">Nome</th>
+                            <th class="px-6 py-3" scope="col">CPF/CNPJ</th>
+                            <th class="px-6 py-3" scope="col">Telefone</th>
+                            <th class="px-6 py-3" scope="col">E-mail</th>
+                            <th class="px-6 py-3 text-center" scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if suppliers %}
+
+                        {%for supplier in suppliers%}
+                        <tr class="border-b border-border-light bg-white hover:bg-zinc-50 ">
+                            <th class="whitespace-nowrap px-6 py-4 font-medium text-zinc-900 " scope="row"><a href="{% url 'stock:detalhes_Fornecedores' supplier.id_supplier %} ">{{supplier.supplier_name}}</a></th>
+                            <td class="px-6 py-4">{{supplier.tax_id}}</td>
+                            <td class="px-6 py-4">{{supplier.phone}}</td>
+                            <td class="px-6 py-4">{{supplier.email}}</td>
+                            <td class="px-6 py-4 text-center">
+                                <button
+                                    class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">
+                                    <a href="{% url 'stock:editar_fornecedor' supplier.id_supplier %}">Editar</button>
+                                <button
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 " onclick="deletar('{{ supplier.id_supplier }}')">Excluir</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <div class="alert alert-info">
+                            <p>Nenhum beneficiário cadastrado ainda.</p>
+                        </div> 
+                        {%endif%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
+     {% block extra_js %}
+    <script>
+        // Lógica de busca (exemplo simples)
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const name = row.cells[0].innerText.toLowerCase();
+                const taxId = row.cells[1].innerText.toLowerCase();
+
+                if (name.includes(query) || taxId.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+            const deletar = async (id) => {
+        
+
+            const confirmacao = confirm(`Tem certeza que deseja excluir este fornecedor ?`);
+            if (!confirmacao) {
+                return;
+            }
+
+            // enviar o nome do beneficiário para o backend para exclusão
+            await fetch(`/stock/suppliers/delete/${id}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json',
+                },
+            })
+            // Reload na página após exclusão para atualizar a lista
+            window.location.reload();
+        }
+
+        // Lógica de exclusão (exemplo simples)
+        
+    </script>
+
+{% endblock %}
+

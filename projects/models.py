@@ -20,7 +20,11 @@ class Project(models.Model):
 
 
     def __str__(self):
-        return self().project_name
+        return self.project_name
+    
+    class Meta:
+        verbose_name = "Projeto"
+        verbose_name_plural = "Projetos"
 
 
 
@@ -35,8 +39,10 @@ class Enrollment(models.Model):
       
     
     def __str__(self):
-        return self().model
+        return str(self.id_Enrollment)
     
 
     class Meta:
         unique_together = ['beneficiary_fk', 'project_fk']
+        verbose_name = "Inscrição"
+        verbose_name_plural = "Inscrições"

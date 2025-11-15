@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br"  >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Meu titulo{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>   
+    
+    <style type="text/tailwindcss">
+        @theme {
+
+        --color-primary: #f6f7f8;
+        --color-secondary: #ffffff;
+        --color-blue-button:#1193d4;
+        --color-blue-buttonlight: #00AAFF;
+        --color-pjr: #F0F3F4;
+        --color-txt-pjr: #617C89;
+        --color-title: #0F172A;
+        --color-subtitle: #6B7280;
+        --color-foreground-light: #111827;
+        --color-foreground-dark: #f9fafb;
+        --color-subtle-dark: #9ca3af;
+        --color-border-light: #e5e7eb;
+        --color-border-dark: #374151;
+        --font-display:"Public Sans", sans-serif;
+        
+
+        
+        {% block extra_tailwind %}{% endblock %}
+
+      }
+    </style>
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class=" min-h-dvh bg-primary w-screen  flex flex-col" >
+    
+    <header class="bg-primary grid grid-cols-3   w-[100%] h-16 sticky top-0 z-10 px-0 border-b border-zinc-200" >   
+
+        <div class="logo ml-8 flex flex-row  ">
+            <div class="flex items-center gap-2 text-zinc-900 dark:text-white">
+                <a href="https://www.providenciando.org.br/site" class="flex items-center gap-2">
+                    <img src="{% static '/images/logo.svg' %}" alt="logo">
+                    <h1 class="text-black font-bold font-display">Providenciando</h1>
+                </a>      
+            </div>
+        </div> 
+
+    {% block nav %}
+        <nav class="flex justify-center">
+            <ul class=" flex flex-row justify-center items-center gap-4  cursor-pointer ">
+                <!-- <li><a class="hover:text-blue-buttonlight font-display " href="">Início</a></li> -->
+                <li><a class="hover:text-blue-buttonlight font-display " href="{% url 'beneficiaries:Beneficiarios' %}">Beneficiário</a></li>
+                <li><a class="hover:text-blue-buttonlight font-display " href="{% url 'projects:Projetos' %}">Projeto</a></li>
+                <li><a class="hover:text-blue-buttonlight font-display " href="{% url 'stock:Fornecedores' %}">Fornecedor</a></li>
+                <li><a class="hover:text-blue-buttonlight font-display " href=" {% url 'stock:entradas' %} ">Estoque</a></li>
+                <li><a class="hover:text-blue-buttonlight font-display " href="{% url 'donations:Doação' %}">Doação</a></li>
+            </ul> 
+        </nav>
+        
+
+        <div class="flex flex-row-reverse mr-8 items-center-safe   ">
+
+            <form method="post" action="{% url 'accounts:logout' %}">
+                {% csrf_token %}       
+                <button type="submit" class="hover:underline">Sair</button>
+            </form>
+        </div>
+    {% endblock %}
+    </header>
+    
+    <main class=" flex-1 container grid grid-cols-1 justify-items-center bg-primary w-[80vw] 2xl:w-[65vw] h-[100%] self-center ">
+        {% block content %}{% endblock %} 
+         
+    </main>
+
+    {% block footer %}
+
+   <footer class="bg-primary  w-[100%] h-10  relatives bottom-0  mt-48 px-6 py-2 border-t border-zinc-200 font-display" >
+        <div class=" my-auto"><p class="text-sm ">© 2025 Providenciando. Todos os direitos reservados.</p></div>
+   </footer>
+   {% endblock %}
+   {% block extra_js %}{% endblock %}
+
+</body>
+</html>

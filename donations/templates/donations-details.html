@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}{{ 'Detalhes da Doação' }}{% endblock %}
+
+ {% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    
+ 
+ {% endblock %}
+
+ {%block content%}
+ 
+<section class="w-full mt-20">
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 ">Detalhes da Doação</h2>
+        <p class="mt-1 text-sm text-gray-600 ">Vizualize e gerencie informações da Doação</p>
+    </div>
+    <div class="rounded-lg border border-gray-200  bg-white  shadow-sm">
+        <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-800  mb-4">Infomação da Doação</h3>
+            <dl class="grid grid-cols-2 grid-rows-6 gap-x-4 gap-y-6 ">
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Nome Do Beneficiário</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.beneficiary_fk.beneficiary_name}}</dd>
+                </div>
+               
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Código da Doação</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.id_donation}}
+                    </dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">CPF</dt>
+                    <dd class="mt-1 text-sm text-gray-900 0">{{donation.beneficiary_fk.cpf}}</dd>
+                </div>
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Data da Doação:</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.donation_date}}</dd>
+                </div>
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Telefone</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.beneficiary_fk.phone}}</dd>
+                </div>
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Mês Referencia:</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.get_donation_month_display}}</dd>
+                </div>
+
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Email</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.beneficiary_fk.email}}</dd>
+                </div>
+
+
+                <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Hora do Registro</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.donation_time}}</dd>
+                </div>
+                 <div class="sm:col-span-1">
+                    <dt class="text-sm font-medium text-gray-500 ">Descrição</dt>
+                    <dd class="mt-1 text-sm text-gray-900 ">{{donation.description}}</dd>
+                </div>
+               
+                
+    
+            </dl>
+        </div>
+        <div class="flex flex-col gap-4 border-t border-gray-200  bg-primary  p-6 sm:flex-row sm:justify-between sm:items-center">
+            <button class="inline-flex items-center justify-center rounded bg-blue-button px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-button/90">Registrar nova doação
+            </button>
+            <div class="flex gap-3">
+                
+                <button
+                    class="inline-flex items-center justify-center rounded bg-blue-button/20  px-4 py-2 text-sm font-medium text-blue-button hover:bg-blue-button/30 ">Editar doação
+                </button>
+                <button
+                    class="inline-flex items-center justify-center rounded bg-red-100  px-4 py-2 text-sm font-medium text-red-600  hover:bg-red-200 ">Deletar doação
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</section>
+ 
+ 
+ 
+ 
+ {%endblock%}

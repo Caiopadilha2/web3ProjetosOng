@@ -60,7 +60,11 @@ class Supplier(models.Model):
 
 
     def __str__(self):
-        return self().supplier_name
+        return self.supplier_name
+    
+    class Meta:
+        verbose_name = 'Fornecedor'
+        verbose_name_plural = 'Fornecedores'
     
 
 
@@ -77,7 +81,12 @@ class Stock(models.Model):
 
 
     def __str__(self):
-        return self().supplier_name
+        return self.stock_name
+    
+    class Meta:
+        verbose_name = 'Estoque'
+        verbose_name_plural = 'Estoque'
+
     
 
 
@@ -97,7 +106,12 @@ class StockEntry(models.Model):
 
 
     def __str__(self):
-        return self().id_stockentry
+        return str(self.id_stockentry)
+    
+
+    class Meta:
+        verbose_name = 'Entrada'
+        verbose_name_plural = 'Entradas'
 
 
 

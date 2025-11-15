@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'cadastrar Beneficiário' }}{% endblock %}
+
+
+{% block content %}
+
+<section class="container w-[63%]  mt-20 py-12 px-12 px-6 lg:px-8 rounded-xl shadow-lg border border-border-light bg-secondary">
+                <div class="mb-8 text-center">
+                    <h1 class="text-3xl font-bold text-black ">Cadastrar Novo Beneficiário</h1>
+                    <p class="mt-1 text-slate-600 ">Preencha os campos abaixo para adicionar um novo
+                        beneficiário ao sistema.</p>
+                </div>
+                <form method="POST" action="{% url 'beneficiaries:form_beneficiarios' %}" class="space-y-6">
+                    
+                    {% csrf_token %}
+
+                    <div class="grid grid-cols-2 gap-y-6 gap-x-4 ">
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="full-name">Nome completo</label>
+                            {{form.beneficiary_name}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="cpf">CPF</label>
+                           {{form.cpf}}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-black " for="dob">Data
+                                de nascimento</label>
+                           {{form.birth_date}}
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Cep</label>
+                            {{form.zip_code}}
+                        </div>
+                         <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Rua</label>
+                            {{form.street}}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Número</label>
+                            {{form.address_number}}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Complemento</label>
+                            {{form.address_complement}}
+                        </div>
+                         <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Bairro</label>
+                            {{form.neighborhood}}
+                        </div>
+                         <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Cidade</label>
+                            {{form.city}}
+                        </div>
+                         <div>
+                            <label class="block text-sm font-medium text-black "
+                                for="address">Estado</label>
+                           {{form.state}}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-black "
+                                for="phone">Telefone</label>
+                            {{form.phone}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="email">E-mail</label>
+                           {{form.email}}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-black "
+                                for="dependents">Quantidade de dependentes</label>
+                            {{form.dependents_count}}
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-black "
+                                for="residents">Quantidade de pessoas na residência</label>
+                            {{form.household_members}}
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-black "
+                                for="family-income">Renda Familiar (R$)</label>
+                           {{form.family_income}}
+                        </div>
+                        <div >
+                            <label class="block text-sm font-medium text-black "
+                                for="profession">Profissão</label>
+                            {{form.occupation}}
+                        </div>                       
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="status">Status da inscrição</label>
+                           {{form.status}}
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="{{ form.projects.id_for_label }}">Escolha um ou mais projetos</label>
+                           {{form.projects}}
+                        </div>
+                        <!-- NÃO APAGAR FIX PARA: BRUNO                     -->
+
+                        <!-- <div class="col-span-2">
+                            <label class="block text-sm font-medium text-black "
+                                for="{{ form.projeto.id_for_label }}">Escolha um projeto</label>
+                           {{form.projeto}}
+>
+                        </div> -->
+                    </div>
+                    <div class=" col-span-2 flex pt-4 border-t border-slate-200 ">                        
+
+                        <input type="submit" value="Enviar inscrição"
+                            class=" w-30 flex-1 rounded-lg bg-blue-button px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-button/90"/>
+                    </div>
+                    {% if success %}
+                        <p class="text-green-600 font-semibold mb-4">Beneficiário cadastrado com sucesso!</p>
+                    {% endif %}
+                        {% if form.errors %}
+                        <div class="text-red-600 font-semibold mt-4">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                </form>
+            </section>
+{% endblock %}

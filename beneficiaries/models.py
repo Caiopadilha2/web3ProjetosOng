@@ -8,7 +8,7 @@ class Beneficiary(models.Model):
         ('pending', 'Pendente'),
         ('suspended', 'Suspenso'),
     ]
-    UF_CHOICE = [
+    UF_CHOICES = [
     ('AC', 'Acre'),
     ('AL', 'Alagoas'),
     ('AM', 'Amazonas'),
@@ -44,11 +44,11 @@ class Beneficiary(models.Model):
     cpf = models.CharField(max_length=14,unique=True, blank=False, null=False,)
     zip_code = models.CharField(max_length=9,blank=False,null=False,verbose_name="CEP")
     street = models.CharField(max_length=200, blank=False, null=False, verbose_name="Rua")
-    address_number =models.CharField(max_length=10,blank=False,null=False,verbose_name="Número") 
+    address_number = models.IntegerField(blank=False,null=False,verbose_name="Número") 
     address_complement = models.CharField(max_length=50, blank=True,null=True,verbose_name="Complemento")
     neighborhood = models.CharField(max_length=100,blank=False,null=False,verbose_name="Bairro")
     city = models.CharField(max_length=100,blank=False,null=False,verbose_name="Cidade")
-    state = models.CharField(max_length=2, choices=UF_CHOICE,blank=False, null=False,verbose_name="UF")
+    state = models.CharField(max_length=2, choices=UF_CHOICES,blank=False, null=False,verbose_name="UF")
     phone = models.CharField(max_length=15,blank=False,null=False,verbose_name="Telefone")
     email = models.EmailField(blank=False,null=False,verbose_name="E-mail")
     occupation = models.CharField(max_length=100, verbose_name="Profissão")
@@ -62,4 +62,8 @@ class Beneficiary(models.Model):
     projects = models.ManyToManyField('projects.Project', through='projects.Enrollment')
 
     def __str__(self):
-        return self().beneficiary_name
+        return self.beneficiary_name
+    
+    class Meta:
+        verbose_name = 'Beneficiário'
+        verbose_name_plural = 'Beneficiários'

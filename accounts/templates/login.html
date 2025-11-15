@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}{{ Login }}{% endblock %}
+
+
+
+
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+
+<section class="login w-[29%]  place-self-center ">
+    
+        <h2 class="mt-0 text-center text-3xl font-bold tracking-tight text-foreground-light font-display ">Bem vindo</h2>
+        <h3 class="mt-2 text-center text-sm text-subtitle font-display">Entre para gerenciar seus projetos e recursos.</h3>
+
+        {% if form.errors %}
+        <div class="error-messages py-4">
+            <ul class="text-sm text-red-400">
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>Usuário ou senha incorretos. Tente novamente.</li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+    
+    <form class="mt-8 space-y-6" method="post">
+        {% csrf_token %}
+        <div class="space-y-4 rounded-lg">
+            <div>
+                <label class="text-sm font-medium text-foreground-light font-display" for="id_username">Login</label>
+                <input class="mt-1 block w-full rounded-lg border border-border-light bg-primary px-3 py-2 text-foreground-light placeholder-subtle-light focus:border-blue-button focus:outline-none focus:ring-blue-button "  id="id_username" name="username" placeholder="Seu username" required="" type="text">
+            </div>
+            <div>
+                <label class="text-sm font-medium text-foreground-light font-display " for="id_password">Senha</label>
+                <input class="mt-1 block w-full rounded-lg border border-border-light bg-primary px-3 py-2 text-foreground-light placeholder-subtle-light focus:border-blue-button focus:outline-none focus:ring-blue-button " id="id_password" name="password" placeholder="••••••••••••" required="" type="password">
+            </div>
+           <button class=" bg-blue-buttonlight group relative flex w-full justify-center rounded-lg border border-transparent mt-12 py-2 px-4 text-sm font-medium text-white hover:bg-blue-button/90 focus:outline-none focus:ring-2 focus:ring-blue-button focus:ring-offset-2" type="submit">Entrar</button>
+           <input type="hidden" name="next" value="{{ next }}">
+        </div>
+
+    </form>
+</section>
+
+{% endblock %}
+{% block footer %}    {% endblock%}
+
+

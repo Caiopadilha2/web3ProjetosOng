@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{%load humanize%}
+{% block title %}{{ 'Projetos' }}{% endblock %}
+
+ {% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    
+ 
+ {% endblock %}
+
+
+{% block content %}
+<section class="w-full mt-20">
+    <div class="mb-8 flex items-center justify-between">
+        <div>
+            <h1 class="text-3xl font-bold text-black ">
+                Detalhes do Projeto 
+            </h1>
+            <p class="text-subtitle/70  mt-1"> 
+                Veja e gerencie as informações do projeto.
+            </p>
+        </div>    
+        <button class="rounded-lg bg-blue-button px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-button/90 focus:outline-none focus:ring-4 focus:ring-blue-button/50">
+            <a href="{% url 'projects:Projetos' %}"> Cadastrar Novo Projeto</a>
+        </button>
+    </div>
+    <div>
+
+        <div class="rounded-lg border border-gray-200  bg-white  shadow-sm">
+            <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-800  mb-4">Infomação do projeto</h3>
+                <dl class="grid grid-cols-2 grid-rows-1 gap-x-12 gap-y-6 ">
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Nome do projeto</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{ project.project_name }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Tipo </dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{ project.get_project_type_display }}</dd>
+                    </div>
+                    <div class="sm:col-span-1 sm:row-span-2">
+                        <dt class="text-sm font-medium text-gray-500 ">Descrição</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{ project.project_description }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Data de início</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{project.start_date }}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500 ">Data do Encerramento</dt>
+                        <dd class="mt-1 text-sm text-gray-900 ">{{project.end_date }}</dd>
+
+                    </div>
+                </dl>
+            </div>
+            <div
+                class="flex flex-col gap-4 border-t border-gray-200  bg-primary  p-6 ">
+                <div class="flex gap-3 justify-end">
+                    <button
+                        class="inline-flex items-center justify-center rounded  px-4 py-2 text-sm font-medium bg-blue-button/20 text-blue-button hover:bg-blue-button/30 ">
+                        <a href="{% url 'projects:editar_projetos' project.id_project %}">Editar
+                        projeto
+                    </button>
+                    <button
+                        class="inline-flex items-center justify-center rounded bg-red-100  px-4 py-2 text-sm font-medium text-red-600  hover:bg-red-200 "
+                        onclick="deletar('{{project.id_project}}')"
+                        >
+                        
+                        Deletar projeto
+                    </button>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Lista do Inscritos no Projeto -->
+ 
+    <div class="mt-10 bg-secondary  rounded-lg shadow-sm border border-subtitle/20 ">
+        <div class="p-6 border-b border-blue-button/20 ">
+            <h2 class="text-xl font-bold text-black ">
+                Beneficiários inscritos no projeto
+            </h2>
+        </div>
+        <div class="rounded-lg border border-zinc-200 bg-white shadow-sm ">
+            <div class="flex items-center justify-between border-b border-zinc-200 p-4 ">
+                <div class="relative w-full max-w-md">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <span class="material-symbols-outlined text-zinc-400">search</span>
+                    </div>
+                    <input
+                        class="form-input w-full rounded-lg border-zinc-300 bg-primary py-2 pl-10 pr-4 text-zinc-900 placeholder-zinc-400 focus:border-blue-button focus:ring-blue-button "
+                        id="search" placeholder="Buscar por nome" type="text" />
+                </div>
+
+            </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-blue-button/20 ">
+                <thead class="bg-background-light ">
+                    <tr class="bg-pjr r">                        
+                        <th class="px-6 py-3 text-left text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Nome
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Matrícula
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Data/hora da incrição
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            Telefone
+                        </th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-subtitle/70  uppercase tracking-wider"
+                            scope="col">
+                            E-mail
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody  class="bg-background-light  divide-y divide-subtitle/20   ">
+                    {% if enrollments %}
+
+                    {% for enrollment in enrollments %}
+
+                    <tr class="text-black ">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
+                            {{ enrollment.beneficiary_fk.beneficiary_name }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            {{ enrollment.id_Enrollment }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            {{ enrollment.enrollment_stamp }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            {{ enrollment.beneficiary_fk.phone }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center ">
+                            {{ enrollment.beneficiary_fk.email }}
+                        </td>
+                        
+                    </tr>
+
+                   {% endfor %}     
+
+
+                    
+                
+                    {% else %}
+                    <div class="alert alert-info">
+                        <p>Nenhum beneficiário cadastrado ainda.</p>
+                    </div>
+                    {% endif %}
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function() {
+        const input = searchInput.value.toLowerCase();
+        const rows = document.querySelectorAll('table tbody tr');
+
+        rows.forEach(row => {
+            const beneficiaryName = row.cells[0].innerText.toLowerCase();
+
+            if (beneficiaryName.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    const deletar = async (id) => {
+        const confirmacao = confirm("Tem certeza que deseja excluir este projeto?");
+        if (!confirmacao) {
+            return;
+        }
+
+        await fetch(`/projects/${id}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+            },
+        })
+        window.location.href = "{% url 'projects:Projetos' %}";
+    }
+</script>
+{% endblock %}
