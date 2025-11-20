@@ -3,7 +3,6 @@ from .models import Beneficiary
 from projects.models import Enrollment     
 from beneficiaries.forms import BeneficiariesModelForm,auto_register_Form
 
-# Create your views here.
 
 
 def beneficiary_list(request):
@@ -26,9 +25,7 @@ def beneficiary_details(request,pk):
 
     if request.method == 'POST':
         beneficiary.delete()
-        # return render(request, 'beneficiaries-list.html', {
-        #     'beneficiaries': Beneficiary.objects.all()
-        # })
+        
         return redirect('form_beneficiarios')
 
     return render(request,'beneficiaries-details.html',{'beneficiary': beneficiary})

@@ -3,7 +3,6 @@ from .models import Project
 from projects.forms import ProjectForm
 
 
-# Create your views here.
 
 def project_list(request):
     projects = Project.objects.all() 

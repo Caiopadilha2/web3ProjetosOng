@@ -92,12 +92,11 @@ class StockEntryForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        self.stock = kwargs.pop('stock', None)  # Recebe o estoque via parâmetro
+        self.stock = kwargs.pop('stock', None)  
         super(StockEntryForm, self).__init__(*args, **kwargs)
         self.fields['supplier_fk'].required = True
         self.fields['supplier_fk'].queryset = Supplier.objects.all()
         
     def save(self, commit=True):
-        # Não salva diretamente, retorna None
-        # A view vai usar os dados cleaned_data para criar múltiplas entradas
+        
         return None

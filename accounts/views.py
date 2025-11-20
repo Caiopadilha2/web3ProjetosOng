@@ -1,5 +1,4 @@
 
-# accounts/views.py
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 
@@ -9,7 +8,7 @@ from django.urls import reverse_lazy
 class LoginView(auth_views.LoginView):
     
     template_name = 'login.html'
-    redirect_authenticated_user = True  # Se já estiver logado, redireciona
+    redirect_authenticated_user = True  
     
     def form_valid(self, form):
         """ login bem-sucedido"""
@@ -25,7 +24,7 @@ class LoginView(auth_views.LoginView):
 
 class LogoutView(auth_views.LogoutView):
     
-    next_page = reverse_lazy('accounts:login')  # retorna para o login
+    next_page = reverse_lazy('accounts:login')  
     
     def dispatch(self, request, *args, **kwargs):
         """antes do logout"""
@@ -38,4 +37,3 @@ class LogoutView(auth_views.LogoutView):
 
 
 
-# Create your views here.

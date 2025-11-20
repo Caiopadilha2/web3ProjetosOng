@@ -69,7 +69,7 @@ def stock_entry(request,stock_id):
                 )
                 entries.append(entry)
             
-            # Salva todas de uma vez (bulk_create é mais eficiente)
+            # Salva tods de uma vezz 
             StockEntry.objects.bulk_create(entries)
             
             messages.success(request, f'{quantity} entrada(s) registrada(s) com sucesso no lote #{next_batch}!')

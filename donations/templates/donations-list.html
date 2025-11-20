@@ -49,7 +49,6 @@
                             <th class="px-6 py-3 " scope="col ">CPF</th>
                             <th class="px-6 py-3" scope="col ">Data/Registro</th>
                             <th class="px-6 py-3" scope="col ">Código da Doação</th>
-                            <!-- <th class="px-6 py-3" scope="col">Ações</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -64,7 +63,7 @@
                             <!-- <td class="px-6 py-4 text-center">
                                 <button class="rounded-md bg-blue-button/25 px-3 py-1.5 text-sm font-medium text-blue-buttonlight hover:bg-zinc-200 ">Editar</button>
                                 <button
-                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 " onclick="deletar('{{ supplier.id_supplier }}')">Excluir</button>
+                                    class="ml-2 rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 hover:bg-red-200 " onclick="deletar('{{ donation.id_donation }}')">Excluir</button>
                             </td> -->
                         </tr>
                         {% endfor %}
@@ -108,7 +107,6 @@
     //             return;
     //         }
 
-    //         // enviar o nome do beneficiário para o backend para exclusão
     //         await fetch(`/donations/${id}/`, {
     //             method: 'POST',
     //             headers: {
@@ -116,13 +114,11 @@
     //                 'Content-Type': 'application/json',
     //             },
     //         })
-    //         // Reload na página após exclusão para atualizar a lista
     //         window.location.reload();
     //     }
 
 
 
-    // Filtar por status, data, etc. pode ser adicionado aqui
 
 </script>
 

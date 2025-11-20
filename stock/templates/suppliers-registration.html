@@ -83,20 +83,16 @@
                     {% if success %}
                         <p class="text-green-600 font-semibold mb-4">Fornecedor cadastrado com sucesso!</p>
                     {% endif %}
-                    <!-- {% if form.errors %}
+        
+                    {% if form.errors %}
                         <div class="text-red-600 font-semibold mt-4">
-                        {{ form.errors }}
-                        </div>
-                    {% endif %} -->
-                        {% if form.errors %}
-                            <div class="text-red-600 font-semibold mt-4">
-                                {% for field, errors in form.errors.items %}
-                                    {% for error in errors %}
-                                        <p>{{ error }}</p>
-                                    {% endfor %}
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <p>{{ error }}</p>
                                 {% endfor %}
-                            </div>
-                        {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
                 </form>
             </section>

@@ -5,10 +5,6 @@ from beneficiaries.views import beneficiary_list, beneficiary_details, beneficia
 
 
 
-#  NÃO APAGAR FIX PARA: BRUNO 
-# from beneficiaries.views import beneficiary_list, beneficiary_details,, beneficiary_form, beneficiary_autoform
-
-
 
 
 app_name = 'beneficiaries'

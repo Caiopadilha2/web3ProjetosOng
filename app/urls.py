@@ -10,11 +10,7 @@ urlpatterns = [
     path('beneficiaries/',include('beneficiaries.urls')),    
     path('donations/',include('donations.urls')),    
     path('projects/', include('projects.urls')),
-    path('stock/', include('stock.urls')),  # ← Apenas um include
-
-    # path('stock/suppliers/', include('stock.urls' , namespace='sotck_suppliers')),
-    # path('stock/entries/', include('stock.urls', namespace='stock_entries')),
-
+    path('stock/', include('stock.urls')),
 
     path('',RedirectView.as_view(url='accounts/login/')),
 

@@ -5,17 +5,7 @@ from beneficiaries.models import Beneficiary
 from projects.models import Project
 
 class BeneficiariesModelForm(forms.ModelForm):
-    #  NÃO APAGAR FIX PARA: BRUNO 
-    #     projeto = forms.ModelChoiceField(
-    #     queryset = Project.objects.all(),
-    #     required = True,
-    #     label= 'Projeto',
-    #     widget= forms.Select(attrs = {"class" : "block w-full rounded-lg border border-border-light bg-primary border focus:border-blue-500 focus:ring focus:ring-blue-200 text-gray-700 p-2"
-    #     })
-
-    # )
-
-    ##############################################
+    
     projects_n = forms.ModelMultipleChoiceField(
     queryset = Project.objects.all(),
     required = True,
@@ -33,9 +23,7 @@ class BeneficiariesModelForm(forms.ModelForm):
     class Meta:
         model = Beneficiary
         fields = ("beneficiary_name","birth_date","cpf","zip_code","street","address_number","address_complement","neighborhood","city","state","phone","email","occupation","family_income","dependents_count","household_members","status","projects_n",)
-        #  NÃO APAGAR FIX PARA: BRUNO                     
-        # fields = ("beneficiary_name","birth_date","cpf","zip_code","street","address_number","address_complement","neighborhood","city","state","phone","email","occupation","family_income","dependents_count","household_members","status","projeto")
-
+        
 
 
         widgets = {

@@ -99,12 +99,7 @@
                                 for="{{ form.projects.id_for_label }}">Escolha um ou mais projetos</label>
                            {{form.projects}}
                         </div>   
-                        <!-- NÃO APAGAR FIX PARA: BRUNO                     -->
-                        <!-- <div class="col-span-2">
-                            <label class="block text-sm font-medium text-black "
-                                for="{{ form.projeto.id_for_label }}">Escolha um projeto</label>
-                           {{form.projeto}}
-                        </div> -->
+                       
                     </div>
                     <div class=" col-span-2 flex pt-4 border-t border-slate-200 ">                        
 
@@ -113,13 +108,7 @@
                     </div>
                     {% if success %}
                         <p class="text-green-600 font-semibold mb-4">Beneficiário cadastrado com sucesso!</p>
-                    {% endif %}
-                    
-                    <!-- {% if form.errors %}
-                        <div class="text-red-600 font-semibold mt-4">
-                        {{ form.errors }}
-                        </div>
-                    {% endif %} -->
+                    {% endif %}                 
                     {% if form.errors %}
                         <div class="text-red-600 font-semibold mt-4">
                             {% for field, errors in form.errors.items %}

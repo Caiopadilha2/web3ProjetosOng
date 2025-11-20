@@ -86,7 +86,7 @@
     {% endblock %}
      {% block extra_js %}
     <script>
-        // Lógica de busca (exemplo simples)
+        // Filtro de busca 
         document.getElementById('search').addEventListener('input', function() {
             const query = this.value.toLowerCase();
             const rows = document.querySelectorAll('tbody tr');
@@ -111,7 +111,6 @@
                 return;
             }
 
-            // enviar o nome do beneficiário para o backend para exclusão
             await fetch(`/stock/suppliers/delete/${id}/`, {
                 method: 'POST',
                 headers: {
@@ -119,11 +118,9 @@
                     'Content-Type': 'application/json',
                 },
             })
-            // Reload na página após exclusão para atualizar a lista
             window.location.replace("{% url 'stock:fornecedores'  %}");
         }
 
-        // Lógica de exclusão (exemplo simples)
         
     </script>
 

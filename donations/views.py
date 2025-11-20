@@ -112,8 +112,7 @@ def unique_donation_register(request, pk):
                 stock_entry.exit_time = now.time()
                 stock_entry.save()
 
-                # messages.success(request, f'**Doação registrada com sucesso para {beneficiary.beneficiary_name}!')
-                # return redirect('beneficiaries:detalhes_beneficiarios', pk=pk)
+                
                 return JsonResponse({
                     'success': True,
                     'message': f'**Doação registrada com sucesso para {beneficiary.beneficiary_name}!'

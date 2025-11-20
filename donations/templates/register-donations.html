@@ -105,11 +105,11 @@
 
                         <input type="submit"  value="Cadastrar doações selecionadas " class=" rounded-lg bg-blue-button px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-button/90 focus:outline-none focus:ring-4 focus:ring-blue-button/50"/>
 
-                        {% if messages %}
+                        <!-- {% if messages %}
                             {% for message in messages %}
                         <div class="w-full pl-6 text-red-600 font-medium alert alert-{{ message.tags }} self-center mx-auto"><span>{{ message }}</span></div>
                          {% endfor %}
-                        {% endif %} 
+                        {% endif %}  -->
 
                     </div>
                 </div>
@@ -184,7 +184,7 @@
             badge.className = 'px-4 py-2 rounded-lg bg-blue-500 text-white font-semibold text-sm';
         }
         
-        //  Desabilita marcadores  ao atingir limite
+        //  Desabilita marcadores  ao atiingir limite
         checkboxes.forEach(checkbox => {
             const row = checkbox.closest('tr');
             
